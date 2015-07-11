@@ -28,7 +28,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	 	<meta name="description" content="">
 	 	<meta name="author" content="">
 	 	<link rel="icon" href="img/favicon/favicon.ico">
@@ -48,7 +48,7 @@
 				<h2 class="form-signin-heading">Log in</h2>
 				<input type="text" name="user" id="user" class="form-control" placeholder="usuario"
 					<?php if (isset($user)) {
-						echo 'value="' . $user . '"  ';
+						echo 'value="' . $user . '"';
 					} ?>
 				required autofocus>
 				<input type="password" name="password" id="password" class="form-control" placeholder="password" required>

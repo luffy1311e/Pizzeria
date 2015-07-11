@@ -1,4 +1,4 @@
-	<?php 
+	<?php
 	require_once '../Core/core.php';
 
 	//validamos que exista un usuario
@@ -20,13 +20,14 @@
 	 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	 	<link rel="stylesheet" href="css/jquery-ui.min.css">
 	 	<link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+		<link rel="stylesheet" href="cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
 
 	 	<!-- CSS propios -->
  		<link rel="stylesheet" href="css/style.css">
 	 	<title>Usuarios</title>
 	 </head>
 	 <body>
-	 	<?php 
+	 	<?php
 	 		if (usuarioBLL::isAdmin()) {
 	 			include('Menus/menu_admin.php');
 	 		}
@@ -46,7 +47,7 @@
 	 	 			</ul>
 	 	 		</div>
 	 	 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	 	 			<?php 
+	 	 			<?php
 	 	 				if (isset($_GET['view'])) {
 	 	 					switch ($_GET['view']) {
 	 	 						case 'listar_usuarios':
@@ -78,8 +79,7 @@
 		<script src="js/jquery-ui.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
-		<script src="js/jquery.dataTables.min.js"></script>
-		<script src="js/jquery.dataTables.js"></script>
+		<script src="cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 		<script src="js/functions.js"></script>
 	 </body>
  </html>

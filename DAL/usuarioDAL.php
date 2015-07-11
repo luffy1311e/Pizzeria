@@ -1,14 +1,14 @@
-<?php 
+<?php
 
 	/**
-	* 
+	*
 	*/
 	class usuarioDAL extends baseDAL
 	{
-		
+
 		function __construct()
 		{
-			
+
 		}
 
 		public static function Agregar($usuario){
@@ -39,7 +39,7 @@
 					)";
 
 			try {
-				
+
 				$conexion = MySqlDAO::getIntance();
 				// Ejecutamos el procedimiento almacenado
 				$conexion->ejecutarSql($sql);
@@ -56,20 +56,20 @@
 		public static function Modificar($usuario) {
 			$fecha = date('Y-m-d H:i:s');
 			$usuario_id = usuarioBLL::getUser()->getId();
-		
+
 			if ($usuario instanceof Administrador){
 				$rol = 1;
 			}
 			else{
 				$rol = 2;
 			}
-		
+
 			try {
 				$conexion = MySqlDAO::getIntance();
 				$sql = "CALL PA_U_Usuario(
 					{$usuario->getId()},
 					'{$usuario->getUsername()}',
-					'{$usuario->getCorreo()}',				
+					'{$usuario->getCorreo()}',
 					'{$usuario->getNombre()}',
 					'{$usuario->getApellido1()}',
 					'{$usuario->getApellido2()}',
@@ -78,27 +78,27 @@
 					{$usuario_id},
 					'{$fecha}',
 					@msg_error)";
-				
+
 				// Ejecutamos el procedimiento almacenado
 				$conexion->ejecutarSql($sql);
 
 				$conexion->cerrarConexion();
 				// Retornamos la cantidad de registros afectados
 				return $conexion->getRegistrosAfectados();
-				
+
 			} catch (Exception $ex) {
 				throw $ex;
 			}
 		}
 
 		public static function Eliminar($id) {
-		
+
 		}
 
 		public static function obtenerTodos($activo) {
 			$sql = "SELECT id, username, correo, nombre, apellido1, apellido2, rol, activo, cod_usr_crea, fec_creacion
 			FROM Usuario";
-		
+
 			try {
 				return self::ejecutarSql($sql);
 			} catch (Exception $ex) {
@@ -120,11 +120,11 @@
 				return self::ejecutarConsulta($sql);
 			} catch (Exception $ex) {
 				throw $ex;
-				
+
 			}
 		}
 
-		public static function obtenerPorID($id) {				
+		public static function obtenerPorID($id) {
 			try {
 				$conexion = MySqlDAO::getIntance();
 				$conexion->abrirConexion();
@@ -133,9 +133,9 @@
 				$result = $conexion->ejecutarSql($sql);
 				// Resultado del procedimeinto almacenado
 				//$conexion->obtenerResultadoPA();
-				
+
 				$usuario = null;
-				
+
 				while ($row = mysqli_fetch_assoc($result)) {
 					$id = $row['id'];
 					$username = $row['username'];
@@ -147,7 +147,7 @@
 					$activo = $row['activo'];
 					$cod_usr_crea = $row['cod_usr_crea'];
 					$fec_creacion = $row['fec_creacion'];
-					
+
 					if ($rol == 1)
 						$usuario = new Administrador($id, $username, $correo, $nombre, $apellido1, $apellido2, $activo);
 					else
@@ -155,7 +155,7 @@
 				}
 				$conexion->cerrarConexion();
 				return $usuario;
-				
+
 			} catch (Exception $ex) {
 				throw $ex;
 			}
@@ -168,9 +168,9 @@
 
 				$conexion->abrirConexion();
 				$result = $conexion->ejecutarSql($sql);
-				
+
 				$lista_usuarios = array();
-				
+
 				while ($row = mysqli_fetch_assoc($result)) {
 					$id = $row['id'];
 					$username = $row['username'];
@@ -182,20 +182,20 @@
 					$activo = $row['activo'];
 					$cod_usr_crea = $row['cod_usr_crea'];
 					$fec_creacion = $row['fec_creacion'];
-			
+
 					if ($rol == 1)
 						$usuario = new Administrador($id, $username, $correo, $nombre, $apellido1, $apellido2, $activo);
 					else
 						$usuario = new Facturador($id, $username, $correo, $nombre, $apellido1, $apellido2, $activo);
-			
+
 					$lista_usuarios[] = $usuario;
-			
+
 				}
-				
+
 				mysqli_free_result($result);
 				$conexion->cerrarConexion();
 				return $lista_usuarios;
-					
+
 			} catch (Exception $ex) {
 				throw $ex;
 			}
@@ -219,7 +219,7 @@
 
 				return true;
 
-			} catch (Exception $e) {
+			} catch (Exception $ex) {
 				throw $ex;
 			}
 		}
@@ -263,7 +263,7 @@
 
 				$usuario = null;
 
-				while ($row = mysqli_fetch_assoc($result)) {
+				while ($row = mysqli_fetch_assoc($result) != null) {
 					$id = $row['id'];
 					$username = $row['username'];
 					$correo = $row['correo'];
@@ -282,11 +282,12 @@
 					}
 				}
 				//cerramos la conexion
+				mysqli_free_result($result);
 				$conexion->cerrarConexion();
 				return $usuario;
 
-			} catch (Exception $e) {
-				throw $ex;	
+			} catch (Exception $ex) {
+				throw $ex;
 			}
 		}
 	}

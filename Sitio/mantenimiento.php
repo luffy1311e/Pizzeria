@@ -64,24 +64,24 @@
 	 	 					switch ($_GET['view']) {
 	 	 						//Pizzas
 	 	 						case 'listar_pizzas':
-	 	 							# code...
+	 	 							include_once 'Mantenimiento/Pizza/listarPizza.php';
 	 	 							break;
 	 	 						case 'nueva_pizza':
-	 	 							# code...
+	 	 							include_once 'Mantenimiento/Pizza/nuevaPizza.php';
 	 	 							break;
 	 	 						case 'modificar_pizza':
-	 	 							# code...
+	 	 							include_once 'Mantenimiento/Pizza/modificarPizza.php';
 	 	 							break;
 
 	 	 						//Ingredientes
 	 	 						case 'listar_ingredientes':
-	 	 							# code...
+	 	 							include_once 'Mantenimiento/Ingrediente/listarIngrediente.php';
 	 	 							break;
 	 	 						case 'nuevo_ingrediente':
-	 	 							# code...
+	 	 							include_once 'Mantenimiento/Ingrediente/nuevoIngrediente.php';
 	 	 							break;
 	 	 						case 'modificar_ingrediente':
-	 	 							# code...
+	 	 							include_once 'Mantenimiento/Ingrediente/modificarIngrediente.php';
 	 	 							break;
 
 	 	 						//Bebidas

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once '../Core/core.php';
 
 	//validamos que exista un usuario
@@ -26,7 +26,7 @@
 	 	<title>Facturacion</title>
 	 </head>
 	 <body>
-	 	<?php 
+	 	<?php
 	 		if (usuarioBLL::isAdmin()) {
 	 			include('Menus/menu_admin.php');
 	 		}
@@ -45,17 +45,17 @@
 	 	 			</ul>
 	 	 		</div>
 	 	 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	 	 			<?php 
+	 	 			<?php
 	 	 				if (isset($_GET['view'])) {
 	 	 					switch ($_GET['view']) {
 	 	 						case 'listar_facturas':
-	 	 							# code...
+	 	 							include_once 'Facturacion/listarFacturas.php';
 	 	 							break;
 	 	 						case 'nueva_factura':
-	 	 							# code...
+	 	 							include_once 'Facturacion/nuevaFactura.php';
 	 	 							break;
 	 	 						case 'anular_factura':
-	 	 							# code...
+	 	 							include_once 'Facturacion/anularFacturas.php';
 	 	 							break;
 	 	 					}
 	 	 				}
