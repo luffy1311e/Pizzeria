@@ -207,17 +207,21 @@
 				$passMD5 = md5($password);
 
 				$conexion = MySqlDAO::getIntance();
-				$sql = "CALL PA_Login('{$username}', '{$passMD5}', @msg_error)";
+				$sql = "CALL PA_Login('{$username}', '{$password}', @msg_error)";
 				// Abre la conexion
 				$conexion->abrirConexion();
 
 				// Ejecutamos el procedimiento almacenado
-				$conexion->ejecutarSql($sql);
+				$msg_error = $conexion->ejecutarSql($sql);
 
 				//Cerramos conexion
 				$conexion->cerrarConexion();
+				if ($msg_error != "") {
+					return true;
+				}else {
+					return false;
+				}
 
-				return true;
 
 			} catch (Exception $ex) {
 				throw $ex;

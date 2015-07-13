@@ -15,7 +15,7 @@
 
 		try {
 			// Verificamos que el usuario exista
-			usuarioBLL::login($user, $pass);
+			$error = usuarioBLL::login($user, $pass);
 
 			if (usuarioBLL::isLogin()) {
 				header('Location: index.php');

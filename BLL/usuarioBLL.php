@@ -100,7 +100,7 @@
 				if (usuarioDAL::login($username, $password)) {
 					$_SESSION['usuario'] = self::obtenerPorUsername($username);
 				}else{
-					return "prueba";
+					return "No se puede encontrar un <strong>Usuario</strong> con esa contraseña";
 				}
 			} catch (Exception $ex) {
 				throw $ex;
