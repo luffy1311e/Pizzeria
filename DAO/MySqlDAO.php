@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	* 
+	*
 	*/
 	class MySqlDAO
 	{
@@ -11,7 +11,7 @@
 		private $hayError;
 		private $numeroError;
 		private $descripcionError;
-		
+
 		function __construct()
 		{
 			$this->conexion = null;
@@ -56,7 +56,7 @@
 		}
 
 		public function setDescripcionError($pDescripcionError){
-			$this->descripcionError = $pDescripcionError;					
+			$this->descripcionError = $pDescripcionError;
 		}
 
 		public function abrirConexion(){
@@ -114,7 +114,7 @@
 		 */
 		public function ejecutarDML($sql){
 			try {
-				
+
 				//Variables locales
 				$vFilasAfectadas = 0;
 
@@ -136,7 +136,7 @@
 		}
 
 		/**
-		 * Ejecutar Sentencias SQL tipo Select o invocación de 
+		 * Ejecutar Sentencias SQL tipo Select o invocación de
 		 * Procedimientos Almacenados (Store Procedures) hacia la fuente de datos
 		 * @param String $pSQL Select/Store Procedure a ejecutar
 		 * @return resource|NULL
@@ -144,7 +144,7 @@
 		public function ejecutarSql($sql){
 			$result;
 			try {
-				
+
 				//Ejecutar la sentencia hacia la base de datos
 				$result = mysqli_query($this->conexion, $sql);
 
@@ -180,7 +180,7 @@
 
 				//Si $resultMultiQuery = FALSE ocurrió un error en la ejecución con la Base de Datos
 				if ( !$resultMultiQuery ) {
-					//Actualizar el estado del error de la sentencia  
+					//Actualizar el estado del error de la sentencia
 					//sql ejecutada en la base de datos
 					$this->ActualizarEstadoErrorBaseDatos();
 				}
@@ -196,7 +196,7 @@
 
 		public function getRegistrosAfectados() {
 			return mysqli_affected_rows($this->conexion);
-		}	
+		}
 
 		/**
 		 * Actualizar el estado de último error ejecutado hacia la base datos
@@ -215,7 +215,7 @@
 		}
 
 		/**
-		 * Actualizar el esatado del error de la última sentencia ejecutada 
+		 * Actualizar el esatado del error de la última sentencia ejecutada
 		 * hacia la Base de Datos
 		 */
 		private function actualizarEstadoErrorBaseDatos(){
@@ -224,7 +224,7 @@
 				$this->setHayError(True);
 				$this->setNumeroError( mysqli_errno($this->conexion) );
 				$this->setDescripcionError( mysqli_error($this->conexion) );
-			}	
+			}
 		}
 	}
  ?>

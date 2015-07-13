@@ -1,9 +1,9 @@
 <?php
 	require_once '../Core/core.php';
 
-	//if (usuarioBLL::isLogin()) {
-		//header("location: acceso.php");
-	//}
+	if (!usuarioBLL::isLogin()) {
+		header('location: acceso.php');
+	}
  ?>
  <!DOCTYPE html>
  <html lang="en">

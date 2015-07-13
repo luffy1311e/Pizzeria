@@ -6,13 +6,15 @@
 	{
 
 
-		private static function validarSession(){
+		private static function validarSession()
+		{
 			if (session_status() !== PHP_SESSION_ACTIVE) {
 				session_start();
 			}
 		}
 
-		public static function getUser(){
+		public static function getUser()
+		{
 			self::validarSession();
 
 			if (isset($_SESSION['usuario'])) {
@@ -110,8 +112,8 @@
 			session_destroy();
 		}
 
-		public static function isLogin(){
-
+		public static function isLogin()
+		{
 			if (self::getUser() != null) {
 				return true;
 			}

@@ -263,7 +263,7 @@
 
 				$usuario = null;
 
-				while ($row = mysqli_fetch_assoc($result) != null) {
+				while ($row = mysqli_fetch_assoc($result)) {
 					$id = $row['id'];
 					$username = $row['username'];
 					$correo = $row['correo'];
@@ -282,7 +282,6 @@
 					}
 				}
 				//cerramos la conexion
-				mysqli_free_result($result);
 				$conexion->cerrarConexion();
 				return $usuario;
 

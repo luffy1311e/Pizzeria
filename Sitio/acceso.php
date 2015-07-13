@@ -3,10 +3,11 @@
 
 	// El usuario ya esta logueado
 	if (usuarioBLL::isLogin()) {
-		//header('Location: index.php');
+		header('Location: index.php');
 	}
 
-	if (isset($_POST['submit'])) {
+	if (isset($_POST['submit']))
+	{
 
 		// Obtenemos los valores
 		$user = $_POST['user'];
