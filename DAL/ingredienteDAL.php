@@ -42,7 +42,7 @@
 
         public static function eliminar($id)
         {
-
+            //falta por agregar
         }
 
         public static function obtenerTodos($activo)
