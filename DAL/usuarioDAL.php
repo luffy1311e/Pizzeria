@@ -219,10 +219,8 @@
 				if ($msg_error != "") {
 					return true;
 				}else {
-					//return false;
+					return false;
 				}
-
-
 			} catch (Exception $ex) {
 				throw $ex;
 			}

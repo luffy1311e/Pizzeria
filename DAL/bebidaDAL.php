@@ -1,14 +1,14 @@
 <?php 
-	
+
 	/**
-	* 
+	*
 	*/
 	class bebidaDAL extends baseDAL
 	{
-		
+
 		function __construct()
 		{
-			
+
 		}
 
 		public static function Agregar($bebida)
@@ -33,7 +33,7 @@
 				   %usuario_id%,
 				   '%fecha%',
 				   @msg_error)";
-			
+
 			try {
 				return self::ejecutarSql($sql);
 			} catch (Exception $ex) {
@@ -66,13 +66,13 @@
 				return self::ejecutarSql($sql);
 			} catch (Exception $ex) {
 				throw $ex;
-				
+
 			}
 		}
 
 		public static function eliminar($id)
 		{
-			
+
 		}
 
 		public static function obtenerTodos($activo)
@@ -92,7 +92,7 @@
 
 		protected static function iterarObjetos($lista) {
 			$lista_bebidas = array();
-			
+
 			while ($row = mysqli_fetch_assoc($lista)) {
 				$id = $row['id'];
 				$descripcion = $row['descripcion'];
@@ -101,14 +101,14 @@
 				$cantidad = $row['cantidad'];
 				$tipo_bebida = $row['tipo_bebida'];
 				$activo = $row['activo'];
-			
+
 				$bebida = FactoryBebida::getBebida($id, $descripcion, $mililitros, $precio, $cantidad, $activo, $tipo_bebida);
 				$lista_bebidas[] = $bebida;
 			}
-			
+
 			// Liberamos los recursos
 			mysqli_free_result($lista);
-			
+
 			return $lista_bebidas;
 		}
 
@@ -131,7 +131,7 @@
 				$conexion = MySqlDAO::getIntance();
 				$conexion->abrirConexion();
 				$result = $conexion->ejecutarSql($sql);
-				
+
 				while ($row = mysqli_fetch_assoc($result)) {
 					$id = $row['id'];
 					$descripcion = $row['descripcion'];
