@@ -15,7 +15,7 @@
 				<li><a href="facturacion.php">Facturacion</a></li>
 				<li><a href="usuario_facturador.php?view=modificar_usuario">Mi Cuenta</a></li>
 				<li><p class="navbar-text">Bienvenidos <?php usuarioBLL::getUser()->getFullName(); ?>,
-						<a href="acceso.php" class="navbar-link">Cerrar Sesion</a>
+						<a href="Menus/logout.php" class="navbar-link">Cerrar Sesion</a>
 					</p>
 				</li>
 			</ul>
