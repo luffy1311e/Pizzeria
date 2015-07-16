@@ -71,5 +71,7 @@
 		<script src="js/jquery-ui.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
+		<script type="js/functions.js"></script>
+		<script type="js/facturar.js"></script>
 	 </body>
  </html>
