@@ -1,4 +1,4 @@
-<h2 class="page-header">Nueva Bebida</h2>
+<h1 class="page-header">Nueva Bebida</h1>
 
 <?php
     $msg_error = "";

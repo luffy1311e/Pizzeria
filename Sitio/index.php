@@ -49,5 +49,6 @@
 	<script src="js/jquery-ui.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/functions.js"></script>
  </body>
  </html>
