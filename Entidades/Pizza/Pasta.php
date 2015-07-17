@@ -23,7 +23,7 @@
                 return 6000.0;
             }
             else{
-                return 4000.0
+                return 4000.0;
             }
         }
 
@@ -66,7 +66,7 @@
             $array["descripcion"] = $this->getDescripcion();
             $array["precio"] = $this->getPrecio();
 
-            return $array();
+            return $array;
         }
     }
  ?>

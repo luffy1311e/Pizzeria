@@ -146,7 +146,9 @@
             $sql .= " ORDER BY {$criterio} LIMIT {$posicion}, {$cantidad}";
 
             try {
-                $result = self::ejecutarSql($sql);
+                $conexion = MySqlDAO::getIntance();
+                $conexion->abrirConexion();
+                $result = $conexion->ejecutarSql($sql);
                 $lista = self::iterarObjetos($result);
                 foreach ($lista as $pizza)
                 {
@@ -156,11 +158,11 @@
     						on d.ingrediente = i.id
     						where d.pizza = {$pizza->getId()}";
 
-                    $result = self::ejecutarSql($sql);
+                    $result = $conexion->ejecutarSql($sql);
                     $lista_ingredientes = self::iterarDetallePizza($result);
                     $pizza->setLista_ingredientes($lista_ingredientes);
                 }
-
+                $conexion->cerrarConexion();
                 return $lista;
             } catch (Exception $ex) {
                 throw $ex;

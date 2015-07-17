@@ -20,7 +20,15 @@
 	 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	 	<link rel="stylesheet" href="css/jquery-ui.min.css">
 	 	<link rel="stylesheet" href="css/jquery-ui.theme.min.css">
-		<link rel="stylesheet" href="cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
+
+		<!-- DataTables CSS -->
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+
+		<!-- jQuery -->
+		<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+		<!-- DataTables -->
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
 
 	 	<!-- CSS propios -->
  		<link rel="stylesheet" href="css/style.css">

@@ -5,7 +5,7 @@
     abstract class TipoIngrediente
     {
 
-        private $is;
+        private $id;
         private $descripcion;
         private $precio;
 
@@ -20,7 +20,7 @@
         {
             $precio = 0;
 
-            switch ($id) {
+            switch ($this->id) {
                 case CarneVegetalQueso::CARNE:
                     $precio = 100;
                     break;

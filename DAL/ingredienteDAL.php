@@ -57,8 +57,32 @@
             $sql .= "ORDER BY id";
 
             try {
-                $result = self::ejecutarSql($slq);
-                return $lista = self::iterarObjetos($result);
+                $conexion = MySqlDAO::getIntance();
+                $conexion->abrirConexion();
+                $result = $conexion->ejecutarSql($sql);
+
+                while ($row = mysqli_fetch_assoc($result))
+                {
+                    $id = $row['id'];
+                    $descripcion = $row['descripcion'];
+                    $costo_adicional = $row['costo_adicional'];
+                    $tipo_ingrediente = $row['tipo_ingrediente'];
+                    $activo = $row['activo'];
+
+                    $obj_tipo_ingrediente = FactoryTipoIngrediente::getTipoIngrediente($tipo_ingrediente);
+
+                    $ingrediente = new Ingrediente($id, $descripcion, $costo_adicional, $obj_tipo_ingrediente, $activo);\
+
+                    //$lista_ingredientes[] = $ingrediente;
+                    array_push($lista_ingredientes,$ingrediente);
+                }
+
+                mysqli_free_result($result);
+
+                $conexion->cerrarConexion();
+                return $lista_ingredientes;
+                //$result = self::ejecutarSql($sql);
+                //return $lista = self::iterarObjetos($result);
             } catch (Exception $ex) {
                 throw $ex;
             }
@@ -118,7 +142,8 @@
 
                     $ingrediente = new Ingrediente($id, $descripcion, $costo_adicional, $obj_tipo_ingrediente, $activo);\
 
-                    $lista_ingredientes[] = $ingrediente;
+                    //$lista_ingredientes[] = $ingrediente;
+                    array_push($lista_ingredientes,$ingrediente);
                 }
 
                 mysqli_free_result($result);

@@ -24,6 +24,15 @@
 	 	<!-- CSS propios -->
  		<link rel="stylesheet" href="css/style.css">
 	 	<title>Facturacion</title>
+
+		<!-- Bootstrap core JavaScript
+	   ================================================== -->
+	   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	   <script src="js/jquery-ui.js"></script>
+	   <script src="js/bootstrap.min.js"></script>
+	   <script src="js/jquery-ui.min.js"></script>
+	   <script src="js/functions.js"></script>
+	   <script src="js/facturar.js"></script>
 	 </head>
 	 <body>
 	 	<?php
@@ -66,12 +75,6 @@
 	 	 		</div>
 	 	 	</div>
 	 	 </div>
-	 	 <!-- Bootstrap core JavaScript
-		================================================== -->
-		<script src="js/jquery-ui.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery-ui.min.js"></script>
-		<script src="js/functions.js"></script>
-		<script type="js/facturar.js"></script>
+
 	 </body>
  </html>

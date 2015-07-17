@@ -21,6 +21,15 @@
 	 	<link rel="stylesheet" href="css/jquery-ui.min.css">
 	 	<link rel="stylesheet" href="css/jquery-ui.theme.min.css">
 
+		<!-- DataTables CSS -->
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+
+		<!-- jQuery -->
+		<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+		<!-- DataTables -->
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
+
 	 	<!-- CSS propios -->
  		<link rel="stylesheet" href="css/style.css">
 	 	<title>Mantenimientos</title>
@@ -105,6 +114,7 @@
 	 	 </div>
 	 	 <!-- Bootstrap core JavaScript
 		================================================== -->
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 		<script src="js/jquery-ui.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery-ui.min.js"></script>

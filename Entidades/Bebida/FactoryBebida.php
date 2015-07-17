@@ -1,10 +1,10 @@
-<?php 
+<?php
 	/**
-	* 
+	*
 	*/
 	 abstract class FactoryBebida
 	{
-		public static function getBebida($id, $descripcion, $mililitros, $precio, 
+		public static function getBebida($id, $descripcion, $mililitros, $precio,
 			$cantidad, $activo, $tipo_bebida)
 		{
 			$bebida = null;

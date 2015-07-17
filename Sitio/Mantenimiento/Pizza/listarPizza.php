@@ -1,4 +1,4 @@
-<h2 class="page-header">Lista de Pizzas</h2>
+<h1 class="page-header">Lista de Pizzas</h1>
 
 <div class="listar-usuarios">
     <?php

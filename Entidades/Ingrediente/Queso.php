@@ -7,7 +7,7 @@
         const ID = "QUE";
         const DESCRIPCION = "Queso";
 
-        function __construct(argument)
+        function __construct()
         {
             parent::__construct(self::ID, self::DESCRIPCION);
         }

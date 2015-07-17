@@ -1,16 +1,10 @@
-<?php 
+<?php
 
 	/**
 	*
 	*/
 	class bebidaDAL extends baseDAL
 	{
-
-		function __construct()
-		{
-
-		}
-
 		public static function Agregar($bebida)
 		{
 

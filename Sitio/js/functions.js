@@ -13,6 +13,9 @@ $(document).ready(function() {
     $.validarFormSimple();
     $.cargarDatosDeListas();
 
+    $('#tabla').DataTable();
+    $('#tablaPizza').DataTable();
+
     $("#myTab a").click(function(e) {
         e.preventDefault();
         $(this).tab('show')

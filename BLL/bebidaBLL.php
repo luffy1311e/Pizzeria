@@ -6,11 +6,6 @@
 	class bebidaBLL extends baseBLL
 	{
 
-		function __construct()
-		{
-
-		}
-
 		public static function agregar($bebida)
 		{
 			try {

@@ -1,10 +1,10 @@
-<?php 
+<?php
 	/**
-	* 
+	*
 	*/
 	abstract class baseBLL
 	{
-		
+
 		public function __construct()
 		{
 			# code...
