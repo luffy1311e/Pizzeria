@@ -23,16 +23,17 @@
 
 	 	<!-- CSS propios -->
  		<link rel="stylesheet" href="css/style.css">
-	 	<title>Facturacion</title>
 
-		<!-- Bootstrap core JavaScript
-	   ================================================== -->
-	   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	   <script src="js/jquery-ui.js"></script>
-	   <script src="js/bootstrap.min.js"></script>
-	   <script src="js/jquery-ui.min.js"></script>
-	   <script src="js/functions.js"></script>
-	   <script src="js/facturar.js"></script>
+
+				 <!-- Bootstrap core JavaScript
+				 ================================================== -->
+				 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+				 <script src="js/jquery-ui.js"></script>
+				 <script src="js/bootstrap.min.js"></script>
+				 <script src="js/jquery-ui.min.js"></script>
+				 <script src="js/functions.js"></script>
+				 <script src="js/facturar.js"></script>
+	 	<title>Facturacion</title>
 	 </head>
 	 <body>
 	 	<?php

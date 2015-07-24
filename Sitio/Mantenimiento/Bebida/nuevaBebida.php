@@ -65,7 +65,7 @@
         <label for="descripcion" class="col-sm-3 control-label">Descripcion</label>
         <div class="col-sm-9">
             <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion"
-            required autofocus="autofocus" pattern="[a-zA-Z0-9]*" value="<?php echo $descripcion; ?>">
+            required autofocus="autofocus" value="<?php echo $descripcion; ?>">
         </div>
     </div>
 

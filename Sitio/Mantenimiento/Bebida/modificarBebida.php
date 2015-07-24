@@ -15,14 +15,15 @@
           $cantidad = 0;
         }
 
-        if (isset($_GET['activo'])) {
+        if (isset($_GET['activo']))
+        {
             $activo = 1;
         }
         else{
-          $activo = 0;
+            $activo = 0;
         }
 
-        $bebida = FactoryBebida::getBebida($id, $descripcion, $mililitros, $precio, $cantidad, $tipo_bebida, $activo);
+        $bebida = FactoryBebida::getBebida($id, $descripcion, $mililitros, $precio, $cantidad, $activo, $tipo_bebida);
 
         try {
             $resultado = bebidaBLL::modificar($bebida);
@@ -63,7 +64,7 @@
       }
 
          try {
-            $bebida = bebidaBLL::obtenerPorId();
+            $bebida = bebidaBLL::obtenerPorId($id);
          } catch (Exception $ex) {
             echo "<div class=\"alert alert-warning\" role=\"alert\">
                      <strong>Alto!</strong> {$ex->getMessage()}

@@ -2,7 +2,7 @@
 
 <div id="listar">
 	<?php
-		$lista_bebidas = bebidaBLL::obtenerPorCriterio("descripcion", "", -1, 0, 10);
+		$lista_bebidas = bebidaBLL::obtenerPorCriterio("descripcion","",-1,0,10);
 
 		if ($lista_bebidas == false) {
 			echo "<div class=\"alert alert-warning\" role\"alert\">

@@ -67,7 +67,7 @@
         <label for="tipo_ingrediente" class="col-sm-3 control-label">Tipo Ingrediente</label>
         <div class="col-sm-9">
             <select class="form-control" name="tipo_ingrediente" id="tipo_ingrediente" required>
-                <?php //echo tipoIngredienteBLL::obtenerOptionsHTML(); ?>
+                <?php echo tipoIngredienteBLL::obtenerOptionsHTML(); ?>
             </select>
             <div class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
                 <button type="button" class="close" data-dismiss="alert">
@@ -118,7 +118,7 @@
 <?php
     if (!empty($msg_error)) {
         echo '<div class="alert alert-danger col-sm-offset-3 col-sm-9" role="alert">
-                    <strong>Error!</strong> '. $msg_error .' 
+                    <strong>Error!</strong> '. $msg_error .'
               </div>';
     }
  ?>

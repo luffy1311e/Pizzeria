@@ -1,8 +1,8 @@
-<?php 
+<?php
 	/**
-	* 
+	*
 	*/
-	class Natural extends base
+	class Natural extends Bebida
 	{
 		private $base;
 		const PORCENTAJE = 0.03;

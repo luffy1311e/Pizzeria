@@ -87,7 +87,7 @@
 			try {
 				$titulos = ["CÓDIGO","DESCRIPCIÓN","PRESENTACIÓN","PRECIO","CANTIDAD","TIPO","ACTIVO"];
 
-				$html = "<table class=\"table table-striped table-hover table-bordered\">";
+				$html = "<table class=\"table table-striped table-hover table-bordered\"  id=\"tablaBebida\">";
 				$html .= "<thead>";
 
 				foreach ( $titulos as $titulo ) {
@@ -104,13 +104,13 @@
 				foreach ($lista as $bebida)
 				{
 					$html .= "<tr>";
-					$html .= "<td>" . 2 . "</td>";
-					$html .= "<td>" . 'Casa' . "</td>";
-					$html .= "<td>" . 100 . " ML.</td>";
-					$html .= "<td>₡ " . number_format(1200, 2) . "</td>";
+					$html .= "<td>" . $bebida->getId() . "</td>";
+					$html .= "<td>" . $bebida->getDescripcion() . "</td>";
+					$html .= "<td>" . $bebida->getMililitros() . " ML.</td>";
+					$html .= "<td>₡ " . number_format($bebida->getPrecio(), 2) . "</td>";
 
 					if ($bebida instanceof Gaseosa) {
-						$cantidad = $bebidaAgua->getCantidad();
+						$cantidad = $bebida->getCantidad();
 					}
 					else{
 						$cantidad = 0;

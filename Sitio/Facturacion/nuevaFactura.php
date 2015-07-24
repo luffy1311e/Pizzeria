@@ -137,7 +137,7 @@
                              </div>
                              <div class="col-sm-8">
                                  <br>
-                                 <div class="slider">
+                                 <div id="slider">
                                  </div>
                              </div>
                          </div>
@@ -172,7 +172,7 @@
                             echo $ex->getMessage();
                         }
 
-                        foreach ($$bebidas as $bebida)
+                        foreach ($bebidas as $bebida)
                         {
                             if ($bebida instanceof Natural)
                             {

@@ -1,8 +1,8 @@
-<?php 
+<?php
 	/**
-	* 
+	*
 	*/
-	class Gaseosa extends base
+	class Gaseosa extends Bebida
 	{
 		private $cantidad;
 

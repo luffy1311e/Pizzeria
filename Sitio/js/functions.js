@@ -15,6 +15,8 @@ $(document).ready(function() {
 
     $('#tabla').DataTable();
     $('#tablaPizza').DataTable();
+    $('#tablaIngrediente').DataTable();
+    $("#tablaBebida").DataTable();
 
     $("#myTab a").click(function(e) {
         e.preventDefault();

@@ -59,7 +59,7 @@
             try {
                 $titulos = ["CÓDIGO","DESCRIPCIÓN","TIPO INGREDIENTE","COSTO ADICIONAL","ACTIVO"];
 
-    			$html = "<table class=\"table table-striped table-hover table-bordered\">";
+    			$html = "<table class=\"table table-striped table-hover table-bordered\" id=\"tablaIngrediente\">";
     			$html .= "<thead>";
 
     			foreach ( $titulos as $titulo ) {
