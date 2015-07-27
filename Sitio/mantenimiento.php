@@ -64,7 +64,7 @@
 	 	 				<li><div class="well well-sm">Bebidas</div></li>
 	 	 				<li><a href="mantenimiento.php?view=listar_bebidas"><span class="glyphicon glyphicon-th-list"></span> Listar Bebidas</a></li>
 	 	 				<li><a href="mantenimiento.php?view=nueva_bebida"><span class="glyphicon glyphicon-plus-sign"></span> Nueva Bebida</a></li>
-	 	 				<li><a href="mantenimiento.php?view=modificar_Bebida"><span class="glyphicon glyphicon-edit"></span> Editar Bebida</a></li>
+	 	 				<li><a href="mantenimiento.php?view=modificar_bebida"><span class="glyphicon glyphicon-edit"></span> Editar Bebida</a></li>
 	 	 			</ul>
 	 	 		</div>
 	 	 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -100,7 +100,7 @@
 	 	 						case 'nueva_bebida':
 	 	 							include_once 'Mantenimiento/Bebida/nuevaBebida.php';
 	 	 							break;
-	 	 						case 'modificar_Bebida':
+	 	 						case 'modificar_bebida':
 	 	 							include_once 'Mantenimiento/Bebida/modificarBebida.php';
 	 	 							break;
 	 	 					}

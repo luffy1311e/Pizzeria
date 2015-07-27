@@ -7,7 +7,7 @@
         if ($listar_ingredientes == false)
         {
             echo "<div class=\"alert alert-warning\" role=\"alert\">
-                      <strong>Alto!</strong> No hay registros que mostrar.
+                      <strong>Error!</strong> No hay registros que mostrar.
                   </div>";
         }
         else{

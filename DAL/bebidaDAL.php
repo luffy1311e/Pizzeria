@@ -42,11 +42,14 @@
 
 		public static function Modificar($bebida)
 		{
+			$fecha = date('Y-m-d H:i:s');
 			if ($bebida instanceof Gaseosa) {
 				$cantidad = $bebida->getCantidad();
+				$tipo_bebida = GaseosaONatural::GASEOSA;
 			}
 			else{
 				$cantidad = 0;
+				$tipo_bebida = GaseosaONatural::NATURAL;
 			}
 
 			$sql = "CALL PA_U_Bebida(
@@ -55,14 +58,19 @@
 				   {$bebida->getMililitros()},
 				   {$bebida->getPrecio()},
 				   {$cantidad},
-				   '{$bebida->getTipo_bebida()}',
+				   '{$tipo_bebida}',
 				   {$bebida->getActivo()},
-				   %usuario_id%,
-				   '%fecha%',
+				   1,
+				   '{$fecha}',
 				   @msg_error)";
 
 			try {
-				return self::ejecutarSql($sql);
+				$conexion = MySqlDAO::getIntance();
+				$conexion->abrirConexion();
+				$resultado = $conexion->ejecutarSql($sql);
+				$conexion->cerrarConexion();
+				return $resultado;
+				//return self::ejecutarSql($sql);
 			} catch (Exception $ex) {
 				throw $ex;
 
@@ -105,8 +113,6 @@
 				mysqli_free_result($result);
 
 				return $lista_bebidas;
-				//$result = self::ejecutarSql($sql);
-				//return $lista = self::iterarObjetos($result);
 			} catch (Exception $ex) {
 				throw $ex;
 			}
@@ -169,7 +175,7 @@
 
 				$bebida = FactoryBebida::getBebida($id, $descripcion, $mililitros, $precio, $cantidad, $activo, $tipo_bebida);
 
-                array_push($lista_bebidas[],$bebida);
+                array_push($lista_bebidas,$bebida);
             }
 
             mysqli_free_result($lista);
@@ -179,7 +185,7 @@
 
 		public static function obtenerPorId($id)
 		{
-			$slq = "CALL PA_S_Bebida_Por_ID('{$id}', @msg_error)";
+			$sql = "CALL PA_S_Bebida_Por_ID('{$id}', @msg_error)";
 
 			try {
 				$conexion = MySqlDAO::getIntance();

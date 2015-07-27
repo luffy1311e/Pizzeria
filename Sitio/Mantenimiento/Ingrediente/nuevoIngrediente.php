@@ -30,7 +30,7 @@
             $resultado = $ex->getMessage();
         }
 
-        if ($resultado === false)
+        if ($resultado === true)
         {
             echo "<div class=\"alert alert-success\" role=\"alert\">
                       <strong>Exitos!</strong> Ingrediente <strong>{$descripcion}</strong> agregados correctamente.

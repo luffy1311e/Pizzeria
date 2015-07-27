@@ -6,18 +6,21 @@
     {
         public static function agregar($pizza)
         {
+            $fecha = date('Y-m-d H:i:s');
             $sql = "CALL PA_I_Pizza(
     				'{$pizza->getDescripcion()}',
     				{$pizza->getQueso()},
     				{$pizza->getActivo()},
-    				%usuario_id%,
-    				'%fecha%',
+    			    1,
+    				'{$fecha}',
     				@msg_error,
     				@pId)";
 
             try {
-                $result = ejecutarSql($sql);
-
+                $conexion = MySqlDAO::getIntance();
+                $conexion->abrirConexion();
+                $result = $conexion->ejecutarSql($sql);
+                $id = $conexion->obtenerValorPA("SELECT @pId");
                 if (is_numeric($id) and $id > 0)
                 {
                     $sql = "";
@@ -27,12 +30,13 @@
     							{$id},
     							'{$ingrediente}',
     							1,
-    							%usuario_id%,
-    							'%fecha%',
-    							@msg_error); ";
+    							1,
+    							'{$fecha}',
+    							@msg_error);";
                     }
 
-                    $result = self::ejecutarMultipleSql($sql);
+                    $result = $conexion->ejecutarMultipleSql($sql);
+                    $conexion->cerrarConexion();
                     return $result;
                 }
                 else {
@@ -100,7 +104,7 @@
 
                 $pizza = new Pizza($id, $descripcion, $activo, null, null, $queso);
 
-                $lista_pizza[] = $pizza;
+                array_push($lista_pizza,$pizza);
             }
 
             mysqli_free_result($lista);
@@ -174,7 +178,9 @@
             $sql = "CALL PA_S_Ingrediente_Por_ID('{$id}', @msg_error)";
 
             try {
-                $result = self::ejecutarSql($sql);
+                $conexion = MySqlDAO::getIntance();
+                $conexion->abrirConexion();
+                $result = $conexion->ejecutarSql($sql);
                 $lista = self::iterarObjetos($result);
                 return $lista[0];
             } catch (Exception $ex) {

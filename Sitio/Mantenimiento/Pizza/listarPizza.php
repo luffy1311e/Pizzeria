@@ -6,8 +6,8 @@
 
         if ($listar_pizzas == false)
         {
-            echo "<div class=\"alert alert-danger\" role=\"alert\">
-                        <strong>Error!</strong>  Intente mas tarde o contacte con el administrador del sistema.
+            echo "<div class=\"alert alert-warning\" role=\"alert\">
+                        <strong>Error!</strong> No hay registros que mostrar.
                   </div>";
         }else {
             echo "<div class=\"table-responsive\">";

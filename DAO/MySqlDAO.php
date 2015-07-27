@@ -194,6 +194,31 @@
 			}
 		}
 
+		public function obtenerValorPA($sql)
+		{
+			$result = mysqli_query($this->conexion, $sql);
+
+			if (!$this->getHayError())
+			{
+				$valor = "";
+
+				while ($row = mysqli_fetch_array($result))
+				{
+					$valor = $row[0];
+				}
+
+				mysqli_free_result($result);
+
+				if (empty($valor))
+				{
+					throw new Exception("Se ha producido un error, intente más tarde.");
+				}
+				return $valor;
+			}
+
+			throw new Exception("Se ha producido un error, intente más tarde.");
+		}
+
 		public function getRegistrosAfectados() {
 			return mysqli_affected_rows($this->conexion);
 		}

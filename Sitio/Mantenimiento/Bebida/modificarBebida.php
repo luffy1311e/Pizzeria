@@ -43,7 +43,7 @@
         }
 
         echo "<p class=\"text-right\">
-                <a href=\"mantenimiento.php?view=modificarBebida\" class=\"btn btn-primary\">
+                <a href=\"mantenimiento.php?view=modificar_bebida\" class=\"btn btn-primary\">
                     <span class=\"glyphicon glyphicon-edit\"></span> Editar Otra Bebida
                 </a>
              </p>";
