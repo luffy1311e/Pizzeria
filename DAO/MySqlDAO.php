@@ -62,12 +62,14 @@
 
 			$this->conexion = mysqli_connect("localhost", $this->usuario, $this->clave, "pizzeria");
 
-			if(mysqli_connect_error()){
+			if(mysqli_connect_error())
+			{
 				throw new Exception(mysqli_connect_error());
 			}
 		}
 
-		public function cerrarConexion(){
+		public function cerrarConexion()
+		{
 			mysqli_close($this->conexion);
 		}
 
@@ -75,7 +77,8 @@
 	 	* Metodo que permite seleccionar una base de datos en MySql
 	 	* @param String $pNombreBaseDatos Nombre de la Base de Datos a Selecionar
 	 	*/
-		public function seleccionarBaseDeDatos($pNombreBaseDatos){
+		public function seleccionarBaseDeDatos($pNombreBaseDatos)
+		{
 			mysqli_select_db($this->conexion, $pNombreBaseDatos);
 		}
 
@@ -85,7 +88,8 @@
 	 	*     http://php.net/manual/es/mysqli.set-charset.php
 	 	*     http://dev.mysql.com/doc/refman/5.6/en/charset-charsets.html
 	 	*/
-		public function modificarSetCharSet() {
+		public function modificarSetCharSet()
+		{
 			$this->conexion->set_charset("utf8");
 		}
 
@@ -93,7 +97,8 @@
 		 * Obtener el resultado de la última sentencia multiple ejecuta hacia la base de datos
 		 * por medio de un multi_query
 		 */
-		public function getStoreResult(){
+		public function getStoreResult()
+		{
 			return mysqli_store_result( $this->conexion );
 		}
 
@@ -101,7 +106,8 @@
 		 * Obtener si hay más resultados en la sentencia multiple ejecutada hacia la base de datos
 		 * por medio de un multi_query
 		 */
-		public function getNextResult(){
+		public function getNextResult()
+		{
 			return mysqli_next_result( $this->conexion );
 		}
 
@@ -111,7 +117,8 @@
 		 * @param String $pSQL Sentencia SQL a ejcutar hacia la base de datos
 		 * @return Int Cantidad de Registros Afectado en la ejecución de la sentencia, si ocurrio un error o no afecto registros
 		 */
-		public function ejecutarDML($sql){
+		public function ejecutarDML($sql)
+		{
 			try {
 
 				//Variables locales
@@ -140,7 +147,8 @@
 		 * @param String $pSQL Select/Store Procedure a ejecutar
 		 * @return resource|NULL
 		 */
-		public function ejecutarSql($sql){
+		public function ejecutarSql($sql)
+		{
 			$result;
 			try {
 
@@ -172,7 +180,8 @@
 		 * @param String $pSQL Select's/Store Procedure's a ejecutar
 		 * @return True|False si ejecutó o no las consultas
 		 */
-		public function ejecutarMultipleSql($sql){
+		public function ejecutarMultipleSql($sql)
+		{
 			$resultMultiQuery = null;
 
 			try {
@@ -184,6 +193,8 @@
 					//Actualizar el estado del error de la sentencia
 					//sql ejecutada en la base de datos
 					$this->ActualizarEstadoErrorBaseDatos();
+					$error = "Descripcion: " . $this->getDescripcionError() . " Numero: " . $this->getNumeroError();
+					return $error;
 				}
 
 				//retornar el resultado de la ejecución de las consultas
@@ -220,7 +231,8 @@
 			throw new Exception("Se ha producido un error, intente más tarde.");
 		}
 
-		public function getRegistrosAfectados() {
+		public function getRegistrosAfectados()
+		{
 			return mysqli_affected_rows($this->conexion);
 		}
 
@@ -228,7 +240,8 @@
 		 * Actualizar el estado de último error ejecutado hacia la base datos
 		 * @param Exception $pError Objeto con el Error ocurrido
 		 */
-		private function actualizarEstadoError($pError){
+		private function actualizarEstadoError($pError)
+		{
 			//Actualizar el estado del error
 			$this->setHayError(true);
 			$this->setNumeroError($pError->getCode());
@@ -244,7 +257,8 @@
 		 * Actualizar el esatado del error de la última sentencia ejecutada
 		 * hacia la Base de Datos
 		 */
-		private function actualizarEstadoErrorBaseDatos(){
+		private function actualizarEstadoErrorBaseDatos()
+		{
 			//Verificar si hay un error en la conexión con la Base de Datos
 			if (mysqli_errno($this->conexion) != 0 ) {
 				$this->setHayError(True);

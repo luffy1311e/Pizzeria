@@ -85,6 +85,21 @@
 
         try {
             $pizza = pizzaBLL::obtenerPorId($id);
+            $lista_ingredientes = ingredienteBLL::obtenerTodos(1);
+            $option_vegetal = "";
+            $option_carne = "";
+
+            foreach ($lista_ingredientes as $ingrediente)
+            {
+                if (get_class($ingrediente->getTipo_ingrediente()) == "Vegetal")
+                {
+                    $option_vegetal .= "<option value=\"{$ingrediente->getId()}\">{$ingrediente->getDescripcion()}</option>";
+                }
+                if (get_class($ingrediente->getTipo_ingrediente()) == "Carne")
+                {
+                    $option_carne .= "<option value=\"{$ingrediente->getId()}\">{$ingrediente->getDescripcion()}</option>";
+                }
+            }
         } catch(Exception $ex) {
             echo "<div class=\"alert alert-warning\" role=\"alert\">
                     <strong>Alto!</strong> {$ex->getMessage()}
@@ -107,12 +122,12 @@
                    <label for="ingrediente" class="col-sm-3 control-label">Ingrediente</label>
                    <div class="col-sm-3">
                        <select class="form-control" multiple name="vegetales[]" id="vegetales" required>
-                          ' . $pizza->getDescripcion() . '
+                          ' . $option_vegetal . '
                        </select>
                    </div>
                    <div class="col-sm-3">
                        <select class="form-control" multiple name="carnes[]" id="carnes" required>
-                          ' . $pizza->getDescripcion() . '
+                          ' . $option_carne . '
                        </select>
                    </div>
                    <div class="col-sm-3">

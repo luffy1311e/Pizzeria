@@ -49,18 +49,20 @@
 
         public static function modificar($pizza)
         {
-            $sql = "CALL PA_U_Ingrediente(
-    				'{$ingrediente->getId()}',
-    				'{$ingrediente->getDescripcion()}',
-    				{$ingrediente->getCosto_adicional()},
-    				'{$ingrediente->getTipo_ingrediente()->getId()}',
-    				{$ingrediente->getActivo()},
-    				%usuario_id%,
-    				'%fecha%',
-    				@msg_error)	";
+            $fecha = date('Y-m-d H:i:s');
+            $sql = "CALL PA_U_Pizza(
+    				'{$pizza->getId()}',
+    				'{$pizza->getDescripcion()}',
+    				{$pizza->getQueso()},
+    				{$pizza->getActivo()},
+        			1,
+    				'{$fecha}',
+    				@msg_error)";
 
             try {
-                return self::ejecutarSql($sql);
+                $conexion = MySqlDAO::getIntance();
+                $conexion->abrirConexion();
+                $result = $conexion->ejecutarSql($sql);
             } catch (Exception $ex) {
                 throw $ex;
             }
@@ -182,15 +184,6 @@
                 $conexion->abrirConexion();
                 $result = $conexion->ejecutarSql($sql);
                 $lista = self::iterarObjetos($result);
-                foreach ($lista as $pizza)
-                {
-                    $sql = "CALL PA_S_Detalle_Pizza_Por_ID('{$pizza->getId()}', @msg_error)";
-
-                    $result = $conexion->ejecutarSql($sql);
-                    var_dump($result);
-                    $lista_ingredientes = self::iterarDetallePizza($result);
-                    $pizza->setLista_ingredientes($lista_ingredientes);
-                }
                 $conexion->cerrarConexion();
                 return $lista[0];
             } catch (Exception $ex) {
