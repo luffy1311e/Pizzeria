@@ -21,7 +21,6 @@
 			$this->hayError = FALSE;
 			$this->numeroError = 0;
 			$this->descripcionError = "";
-			//$this->abrirConexion("root", "123456");
 		}
 
 		public static function getIntance(){
@@ -153,6 +152,8 @@
 					//Actualizar el estado del error de la sentencia sql ejecutada en la
 					//base de datos
 					$this->ActualizarEstadoErrorBaseDatos();
+					$error = "Descripcion: " . $this->getDescripcionError() . " Numero: " . $this->getNumeroError();
+					return $error;
 				}
 				//Retornar el resultSet
 				return $result;

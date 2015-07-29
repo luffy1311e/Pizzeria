@@ -128,7 +128,7 @@
                 $obj_tipo_ingrediente = FactoryTipoIngrediente::getTipoIngrediente($tipo_ingrediente);
                 $obj_ingrediente = new Ingrediente($id, $descripcion, $costo_adicional, $obj_tipo_ingrediente, $activo);
 
-                $lista_Detalle_Pizza[] = $obj_ingrediente;
+                array_push($lista_Detalle_Pizza, $obj_ingrediente);
             }
 
             mysqli_free_result($lista);
@@ -175,13 +175,23 @@
 
         public static function obtenerPorId($id)
         {
-            $sql = "CALL PA_S_Ingrediente_Por_ID('{$id}', @msg_error)";
+            $sql = "CALL PA_S_Pizza_Por_ID('{$id}', @msg_error)";
 
             try {
                 $conexion = MySqlDAO::getIntance();
                 $conexion->abrirConexion();
                 $result = $conexion->ejecutarSql($sql);
                 $lista = self::iterarObjetos($result);
+                foreach ($lista as $pizza)
+                {
+                    $sql = "CALL PA_S_Detalle_Pizza_Por_ID('{$pizza->getId()}', @msg_error)";
+
+                    $result = $conexion->ejecutarSql($sql);
+                    var_dump($result);
+                    $lista_ingredientes = self::iterarDetallePizza($result);
+                    $pizza->setLista_ingredientes($lista_ingredientes);
+                }
+                $conexion->cerrarConexion();
                 return $lista[0];
             } catch (Exception $ex) {
                 throw $ex;

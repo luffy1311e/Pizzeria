@@ -103,10 +103,51 @@
                         autofocus="autofocus" value="' . $pizza->getDescripcion() . '">
                     </div>
                 </div>
+                <div class="form-group">
+                   <label for="ingrediente" class="col-sm-3 control-label">Ingrediente</label>
+                   <div class="col-sm-3">
+                       <select class="form-control" multiple name="vegetales[]" id="vegetales" required>
+                          ' . $pizza->getDescripcion() . '
+                       </select>
+                   </div>
+                   <div class="col-sm-3">
+                       <select class="form-control" multiple name="carnes[]" id="carnes" required>
+                          ' . $pizza->getDescripcion() . '
+                       </select>
+                   </div>
+                   <div class="col-sm-3">
+                       <label for="queso" class="control-label">Queso</label>
+                       <input type="number" class="form-control" name="queso" id="queso" placeholder="Ej. 100 gramos" required
+                        value="' . $pizza->getQueso() .'" >
+                   </div>
+                </div>
 
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="activo" id="activo"';
+                                    if ($pizza->getActivo() == 1)
+                                    {
+                                        echo ' checked="checked"';
+                                    }
+                                    echo '> Activo
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" name="submit" id="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-floppy-saved"></span> Guardar
+                        </button>
+                        <a href="mantenimiento.php" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
+                    </div>
+                </div>
              </form>';
 
+             return;
     }
  ?>
 

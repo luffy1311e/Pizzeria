@@ -136,12 +136,14 @@
     				}
 
     				if ($eliminar == true) {
-    				if ($bebida->getActivo())
-    					$html .= "<td><a href=\"{$pizza->getId()}\" class=\"btn btn-danger btn-xs\" data-toggle=\"modal\" data-target=\"#modalEliminar\">
-    					<span class=\"glyphicon glyphicon-remove\"></span> Deshabilitar</a></td>";
-    					else
-    					$html .= "<td><a href=\"{$pizza->getId()}\" class=\"btn btn-success btn-xs\" data-toggle=\"modal\" data-target=\"#modalEliminar\">
-    					<span class=\"glyphicon glyphicon-ok\"></span> Habilitar</a></td>";
+        				if ($bebida->getActivo())
+                        {
+                            $html .= "<td><a href=\"{$pizza->getId()}\" class=\"btn btn-danger btn-xs\" data-toggle=\"modal\" data-target=\"#modalEliminar\">
+                            <span class=\"glyphicon glyphicon-remove\"></span> Deshabilitar</a></td>";
+                        }else{
+                            $html .= "<td><a href=\"{$pizza->getId()}\" class=\"btn btn-success btn-xs\" data-toggle=\"modal\" data-target=\"#modalEliminar\">
+                            <span class=\"glyphicon glyphicon-ok\"></span> Habilitar</a></td>";
+                        }
     				}
 
     				$html .= "</tr>";
