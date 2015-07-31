@@ -56,13 +56,37 @@
     				{$pizza->getQueso()},
     				{$pizza->getActivo()},
         			1,
-    				'{$fecha}',
-    				@msg_error)";
+    				'{$fecha}', 
+    				@msg_error,
+                    @lID)";
 
             try {
                 $conexion = MySqlDAO::getIntance();
                 $conexion->abrirConexion();
                 $result = $conexion->ejecutarSql($sql);
+                var_dump($result);
+                $id = $conexion->obtenerValorPA("SELECT @lID");
+                if (is_numeric($id) and $id > 0)
+                {
+                    $sql = "";
+                    foreach ($pizza->getLista_ingredientes() as $ingrediente)
+                    {
+                        $sql .= "CALL PA_I_DetallePizza(
+    							{$id},
+    							'{$ingrediente}',
+    							1,
+    							1,
+    							'{$fecha}',
+    							@msg_error);";
+                    }
+
+                    $result = $conexion->ejecutarMultipleSql($sql);
+                    $conexion->cerrarConexion();
+                    return $result;
+                }
+                else {
+                    throw new Exception("Consulte con su administrador.");
+                }
             } catch (Exception $ex) {
                 throw $ex;
             }
