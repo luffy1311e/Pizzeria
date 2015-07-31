@@ -47,7 +47,6 @@
         } catch (Exception $ex) {
             $resultado = $ex->getMessage();
         }
-
         if ($resultado)
         {
             echo "<div class=\"alert alert-success\" role=\"alert\">
@@ -55,12 +54,12 @@
                  </div>";
         }else {
             echo "<div class=\"alert alert-danger\" role=\"alert\">
-                    <strong>Error!</strong> No se pudo editar el ingrediente <strong>{$resultado}</strong>
+                    <strong>Error!</strong> No se pudo editar la Pizza <strong>{$resultado}</strong>
                   </div>";
         }
 
         echo "<p class=\"text-right\">
-                    <a href=\"mantenimiento?view=modificar_pizza\" class=\"btn btn-primary\">
+                    <a href=\"mantenimiento.php?view=modificar_pizza\" class=\"btn btn-primary\">
                         <span class=\"glyphicon glyphicon-edit\"></span> Editar Otra Pizza.
                     </a>
              </p>";

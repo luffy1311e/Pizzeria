@@ -56,18 +56,18 @@
     				{$pizza->getQueso()},
     				{$pizza->getActivo()},
         			1,
-    				'{$fecha}', 
+    				'{$fecha}',
     				@msg_error,
                     @lID)";
-
             try {
                 $conexion = MySqlDAO::getIntance();
                 $conexion->abrirConexion();
                 $result = $conexion->ejecutarSql($sql);
-                var_dump($result);
                 $id = $conexion->obtenerValorPA("SELECT @lID");
+                var_dump($id);
                 if (is_numeric($id) and $id > 0)
                 {
+                    echo "Dani";
                     $sql = "";
                     foreach ($pizza->getLista_ingredientes() as $ingrediente)
                     {
@@ -79,13 +79,13 @@
     							'{$fecha}',
     							@msg_error);";
                     }
-
                     $result = $conexion->ejecutarMultipleSql($sql);
                     $conexion->cerrarConexion();
                     return $result;
                 }
                 else {
-                    throw new Exception("Consulte con su administrador.");
+                    $error = $conexion->obtenerValorPA("SELECT @msg_error");
+                    throw new Exception($error);
                 }
             } catch (Exception $ex) {
                 throw $ex;
