@@ -24,7 +24,8 @@
 		}
 
 		public static function Agregar($object){
-			if ($object['rol'] == 1) {
+			if ($object['rol'] == 1)
+			{
 				$usuario = new Administrador(0, $object['username'], $object['correo'],
 					$object['nombre'], $object['apellido1'], $object['apellido2'], $object['activo'], $object['password']);
 			}
@@ -136,7 +137,7 @@
 			try {
 				$titulos = ["ID", "USERNAME", "CORREO", "NOMBRE", "ROL", "ACTIVO"];
 
-				$html  = "<table class=\"table table-striped table-hover table-bordered\" id=\"tabla\">";
+				$html  = "<table class=\"table table-striped table-hover table-bordered\" id=\"tablaUsuarios\">";
 				$html .= "<thead>";
 
 				foreach ($titulos as $titulo) {

@@ -60,7 +60,6 @@ $(document).ready(function(){
                                 $("#detalle-pizza ul").html("<li class=\"placeholder\"><p class=\"text-center\">Arrastre las pizzas, productos o bebidas aqui.</p></li>");
                             }
                             $.calcularTotales();
-
                             return;
                         }
                     }

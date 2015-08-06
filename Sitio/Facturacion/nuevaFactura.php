@@ -125,6 +125,7 @@
     							</li>';
                         echo "</div>";
                      ?>
+                     <!-- #queso -->
                      <br>
                      <h4 class="page-header">Queso</h4>
                      <div id="queso">
@@ -137,11 +138,10 @@
                              </div>
                              <div class="col-sm-8">
                                  <br>
-                                 <div id="slider">
-                                 </div>
+                                 <div id="slider"></div>
                              </div>
                          </div>
-                     </div>
+                     </div> <!-- #queso -->
                      <br>
                      <h4 class="page-header">Ingredientes</h4>
                      <?php

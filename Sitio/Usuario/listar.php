@@ -16,4 +16,3 @@
 		}
 	 ?>
 </div>
-<div id="page" class="hidden">/Usuario/buscar_usuarios.php</div>
