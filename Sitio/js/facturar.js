@@ -15,6 +15,10 @@ $(document).ready(function(){
         }
     });
 
+    /**
+	 * Elimina la linea agregadas a la factura si se
+	 * arrastra el elemento al boton de eliminar
+	 */
     $("#papelera").droppable({
         activeClass: "ui-state-default",
         hoverClass: "ui-state-hover",
@@ -86,7 +90,7 @@ $(document).ready(function(){
         cursor: "move"
     });
 
-    $("detalle-pizza ul").droppable({
+    $("#detalle-pizza ul").droppable({
         activeClass: "ui-state-default",
         hoverClass: "ui-state-hover",
         accept: ":not(.ui-sortable-helper)",
@@ -164,14 +168,16 @@ $.formatoNumero = function(numero, decimales, separador_decimal, separador_miles
 
     if (decimales !== undefined)
     {
-        numero = numero.ToFixed(decimales);
+        // Redondeamos
+        numero = numero.toFixed(decimales);
     }
 
     numero = numero.toString().replace(".", separador_decimal!==undefined ? separador_decimal : ",");
 
     if (separador_miles)
     {
-        var miles =new RegExp("(-?[0-9]+)([0-9]{3})");
+        // Convertimos el punto en separador_decimal
+        var miles=new RegExp("(-?[0-9]+)([0-9]{3})");
         while (miles.test(numero))
         {
             numero = numero.replace(miles, "$1" + separador_miles + "$2");

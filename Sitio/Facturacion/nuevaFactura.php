@@ -27,11 +27,10 @@
                     </div>
                     <hr>
                 </div>
-                <div class="clearfix">
-                </div>
+                <div class="clearfix"></div>
                 <div id="detalle-pizza">
                     <ul>
-                        <li>
+                        <li class="placeholder">
                             <p class="text-center">Arrastre las pizzas, productos o bebidas aqui.</p>
                         </li>
                     </ul>
