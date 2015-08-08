@@ -241,6 +241,16 @@ create table Factura(
 #============================================
 # Tabla para agregar detalle a la Factura
 #============================================
-drop table if exists DetalleFatura (
+drop table if exists DetalleFatura;
+
+create table DetalleFactura(
 	factura int not null,
-    pizza varchar(6) not null, 
+    pizza varchar(50) not null,
+    bebida varchar(20) not null,
+    activo bit(1) default 1,
+    cod_usr_crea int not null,
+    fec_creacion datetime not null,
+    primary key (factura, pizza, bebida),
+    foreign key (factura) references factura (id),
+    foreign key (cod_usr_crea) references Usuario (id)
+) comment = 'Tabla detalle Factura';
