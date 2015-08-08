@@ -1,4 +1,55 @@
 <h2 class="page-header">Nueva Factura</h2>
+
+<?php
+    $msg_error = "";
+    $fecha = "";
+    $tipoPago = "";
+    $total = 0;
+    $ivi = 0;
+    $activo = 1;
+
+    if (isset($_GET['submit']))
+    {
+        $fecha = $_GET['fecha'];
+        $total = $_GET['total'];
+        $ivi = $_GET['IV'];
+        if (isset($_GET['rdbContado']) == 'checked')
+        {
+            $tipoPago = "Contado";
+        }
+        $tipoPago = "Tarjeta";
+
+        $factura = new Factura(0, $fecha, $total, $ivi, $tipoPago);
+
+        try {
+            $resultado = facturaBLL::agregar($factura);
+        } catch (Exception $ex) {
+            $resultado = $ex->getMessage();
+        }
+
+        if ($resultado == true)
+        {
+            echo "<div class=\"alert alert-success\" role=\"alert\">
+                    <strong>Exito!</strong> Factura procesada correctamente.
+                 </div>";
+        }else {
+            echo "<div class=\"alert alert-danger\" role=\"alert\">
+                    <strong>Error!</strong> No se puedo procesar la Factura.
+                 </div>";
+        }
+
+        echo "<p class=\"text-right\">
+				<a href=\"facturacion.php?view=nueva_factura\"
+			  	class=\"btn btn-primary\">
+					<span class=\"glyphicon glyphicon-plus-sign\"></span>
+			  		Nueva Factura
+			  	</a>
+			  </p>";
+
+        return;
+    }
+ ?>
+
 <div class="row">
     <div class="col-sm-6">
         <div class="row">
@@ -11,7 +62,8 @@
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon">Fecha</span>
-                        <input type="text" class="form-control" placeholder="Fecha" disabled="disabled" value="<?php echo date('Y-m-d H:i:s'); ?>">
+                        <input type="text" class="form-control"  name="fecha" id="fecha" placeholder="Fecha" disabled="disabled"
+                         value="<?php echo date('Y-m-d H:i:s'); ?>">
                     </div>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default active rdbTipoPago">
@@ -48,12 +100,12 @@
 
                     <div class="input-group">
                         <span class="input-group-addon">I.V. ₡</span>
-                        <input type="text" id="txtIV" class="form-control" placeholder="0" disabled="disabled">
+                        <input type="text" name="IV" id="txtIV" class="form-control" placeholder="0" disabled="disabled">
                     </div>
 
                     <div class="input-group">
                         <span class="input-group-addon">Total a Pagar ₡</span>
-                        <input type="text" id="txtTotal" class="form-control" placeholder="0" disabled="disabled">
+                        <input type="text"  name="total" id="txtTotal" class="form-control" placeholder="0" disabled="disabled">
                     </div>
                 </div>
 

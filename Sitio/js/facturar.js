@@ -95,7 +95,8 @@ $(document).ready(function(){
         hoverClass: "ui-state-hover",
         accept: ":not(.ui-sortable-helper)",
         drop: function(event, ui){
-            if (ui.draggable.attr("role") == "producto") {
+            if (ui.draggable.attr("role") == "producto")
+            {
                 var id = ui.draggable.attr("id");
 	    		var object = ui.draggable.attr("object");
 	    		var token = ui.draggable.attr("token");
