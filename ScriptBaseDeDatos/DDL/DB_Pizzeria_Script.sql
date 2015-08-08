@@ -237,3 +237,10 @@ create table Factura(
     primary key (id),
     foreign key (cod_usr_crea) references Usuario (id)
 ) comment = 'Tabla de Facturacion';
+
+#============================================
+# Tabla para agregar detalle a la Factura
+#============================================
+drop table if exists DetalleFatura (
+	factura int not null,
+    pizza varchar(6) not null, 
