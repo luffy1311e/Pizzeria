@@ -219,3 +219,21 @@ create table DetallePizza (
 	foreign key (cod_usr_crea) references Usuario (id),
 	foreign key (cod_usr_modifica) references Usuario (id)
 ) comment = 'Tabla para detalle de ingredientes para las pizzas';
+
+#============================================
+# Tabla para las Facturas
+#============================================
+drop table if exists Factura;
+
+create table Factura(
+	id int auto_increment not null,
+    fecha datetime not null,
+    total decimal not null,
+    ivi decimal not null,
+    tipoPago int,
+    activo bit(1) default 1,
+    cod_usr_crea int not null,
+    fec_creacion datetime not null,
+    primary key (id),
+    foreign key (cod_usr_crea) references Usuario (id)
+) comment = 'Tabla de Facturacion';

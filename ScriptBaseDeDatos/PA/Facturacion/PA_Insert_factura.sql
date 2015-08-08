@@ -9,14 +9,14 @@ drop procedure if exists PA_I_Factura;
 
 DELIMITER //
 
-CREATE PROCEDURE PA_I_Factura(pNumeroFac int, PFecha datetime, total decimal(10.1), ivi decimal(10.1),  ptipoPago int,  INOUT pMensajeError VARCHAR(2000))
+CREATE PROCEDURE PA_I_Factura(pNumeroFac int, PFecha datetime, total decimal, ivi decimal,  ptipoPago int,  INOUT pMensajeError VARCHAR(2000))
 bloquePrincipal:
 BEGIN
      
    -- Declaración de variables locales
    DECLARE vCantidad_Registros INT;
    DECLARE vError INT;
-   DECLARE cNombre_Logica VARCHAR(30) DEFAULT 'Lógica [sp_I_Facturacion]';
+   DECLARE cNombre_Logica VARCHAR(30) DEFAULT 'Lógica [PA_I_Factura]';
 
    -- Declaración de bloque con Handler para manejo de SQLException
    DECLARE EXIT HANDLER FOR SQLEXCEPTION, SQLWARNING
@@ -35,7 +35,7 @@ BEGIN
    SET pMensajeError = "";
    
    -- Insertar en la tabla de Factura
-	INSERT INTO factura (numerofac, fecha, total, ivi, tipopago, estado)
+	INSERT INTO Factura (numerofac, fecha, total, ivi, tipopago, estado)
 	VALUES (pNumeroFac,PFecha,total,ptipoPago,ivi,1);
 
 	COMMIT;
